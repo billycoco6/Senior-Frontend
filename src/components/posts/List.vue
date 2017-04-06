@@ -25,13 +25,14 @@
           </div>
         </div>
         <div class="col-xs-9">
-	       <our-news v-for="get in list" :mynews='get' @update="onStep1Update"></our-news>
+	       <our-news v-for="get in allPost" :mynews='get' @update="onStep1Update"></our-news>
         </div>
       </div>
 	</div>
 </template>
 
 <script>
+import post from '../../api/posts.js'
 var moment = require('moment')
 export default {
   props: ['feeds'],
@@ -60,108 +61,11 @@ export default {
             'Computer literacy (MS office)',
             'Good command of English both speaking and writing'
           ]
-        },
-        {
-          index: 2,
-          CompanyEmail: 'hello@world.com',
-          JobName: 'Internal Audit Department Manager',
-          JobPlace: 'Thai Foods Group Public Company Limited.',
-          JobLocations: 'Jatuchak',
-          JobDescriptionShort: 'Our2 IT Audit processionals help organizations enhance the effectiveness and efficiency of critical in-house governance, internal audit and regulatory compliance functions.',
-          JobDescriptionLong: 'By2 focusing on regulatory and compliance, we help clients proactively comply with regulatory requirements (including SOX regulations) as well as effectively secure and monitor systems and data to help improve the compliance functions. We help mitigate regulatory and compliance risks that could lead to losses from non-compliance, litigation, or regulatory and compliance risks that could lead to losses from non-compliance, litigation, or regulatory sanctions and fines.',
-          ImageLogo: 'Internal_Audit.jpg',
-          postDate: moment(new Date(2015, 1, 3)).format('DD/MMM/YYYY'),
-          level: 'Staff',
-          Position: 'Internal Audit Department Manager',
-          Qualifications: [
-            'Male, Female age 22-27 years olds',
-            "Bachelor's degree in Accounting",
-            '0-3 years experience in Internal Auditor, Auditor,Accounting',
-            'Computer literacy (MS office)',
-            'Good command of English both speaking and writing'
-          ]
-        },
-        {
-          index: 3,
-          CompanyEmail: 'hello@world.com',
-          JobName: 'Senior Manager, Accounting',
-          JobPlace: 'Big C Supercenter Public Company Limited',
-          JobLocations: 'Pathumwan',
-          JobDescriptionShort: 'Our IT Audit processionals help organizations enhance the effectiveness and efficiency of critical in-house governance, internal audit and regulatory compliance functions.',
-          JobDescriptionLong: 'By focusing on regulatory and compliance, we help clients proactively comply with regulatory requirements (including SOX regulations) as well as effectively secure and monitor systems and data to help improve the compliance functions. We help mitigate regulatory and compliance risks that could lead to losses from non-compliance, litigation, or regulatory and compliance risks that could lead to losses from non-compliance, litigation, or regulatory sanctions and fines.',
-          ImageLogo: 'Senior_Manager.jpg',
-          postDate: moment(new Date(2017, 1, 2)).format('DD/MMM/YYYY'),
-          level: 'Staff',
-          Position: 'Senior Manager, Accounting',
-          Qualifications: [
-            'Male, Female age 22-27 years olds',
-            "Bachelor's degree in Accounting",
-            '0-3 years experience in Internal Auditor, Auditor,Accounting',
-            'Computer literacy (MS office)',
-            'Good command of English both speaking and writing'
-          ]
-        },
-        {
-          index: 4,
-          CompanyEmail: 'hello@world.com',
-          JobName: 'Accounting Manager',
-          JobPlace: 'Lazada Ltd.',
-          JobLocations: 'Bangkok',
-          JobDescriptionShort: 'Our IT Audit processionals help organizations enhance the effectiveness and efficiency of critical in-house governance, internal audit and regulatory compliance functions.',
-          JobDescriptionLong: 'By focusing on regulatory and compliance, we help clients proactively comply with regulatory requirements (including SOX regulations) as well as effectively secure and monitor systems and data to help improve the compliance functions. We help mitigate regulatory and compliance risks that could lead to losses from non-compliance, litigation, or regulatory and compliance risks that could lead to losses from non-compliance, litigation, or regulatory sanctions and fines.',
-          ImageLogo: 'Lazada.png',
-          postDate: moment(new Date(2016, 5, 20)).format('DD/MMM/YYYY'),
-          level: 'Staff',
-          Position: 'Accounting Manager',
-          Qualifications: [
-            'Male, Female age 22-27 years olds',
-            "Bachelor's degree in Accounting",
-            '0-3 years experience in Internal Auditor, Auditor,Accounting',
-            'Computer literacy (MS office)',
-            'Good command of English both speaking and writing'
-          ]
-        },
-        {
-          index: 5,
-          CompanyEmail: 'hello@world.com',
-          JobName: 'AP Accounting Staff 20-25K + Allowance + Bonus / JP Leasing @ BTS Ploenchit',
-          JobPlace: 'Echoas Japanese Recruitment (Thailand) Co., Ltd.',
-          JobLocations: 'Pathumwan',
-          JobDescriptionShort: 'Our IT Audit processionals help organizations enhance the effectiveness and efficiency of critical in-house governance, internal audit and regulatory compliance functions.',
-          JobDescriptionLong: 'By focusing on regulatory and compliance, we help clients proactively comply with regulatory requirements (including SOX regulations) as well as effectively secure and monitor systems and data to help improve the compliance functions. We help mitigate regulatory and compliance risks that could lead to losses from non-compliance, litigation, or regulatory and compliance risks that could lead to losses from non-compliance, litigation, or regulatory sanctions and fines.',
-          ImageLogo: 'echoas.jpg',
-          postDate: moment(new Date(2017, 1, 15)).format('DD/MMM/YYYY'),
-          level: 'Staff',
-          Position: 'AP Accounting Staff',
-          Qualifications: [
-            'Male, Female age 22-27 years olds',
-            "Bachelor's degree in Accounting",
-            '0-3 years experience in Internal Auditor, Auditor,Accounting',
-            'Computer literacy (MS office)',
-            'Good command of English both speaking and writing'
-          ]
-        },
-        {
-          index: 6,
-          CompanyEmail: 'hello@world.com',
-          JobName: 'Internal Auditor Staff (PMFTH - Navanakorn, Pathumthani)',
-          JobPlace: 'Panasonic Management (Thailand) Co., Ltd.',
-          JobLocations: 'Klongluang',
-          JobDescriptionShort: 'Our IT Audit processionals help organizations enhance the effectiveness and efficiency of critical in-house governance, internal audit and regulatory compliance functions.',
-          JobDescriptionLong: 'By focusing on regulatory and compliance, we help clients proactively comply with regulatory requirements (including SOX regulations) as well as effectively secure and monitor systems and data to help improve the compliance functions. We help mitigate regulatory and compliance risks that could lead to losses from non-compliance, litigation, or regulatory and compliance risks that could lead to losses from non-compliance, litigation, or regulatory sanctions and fines.',
-          ImageLogo: 'panasonic.png',
-          postDate: moment(new Date(2016, 4, 2)).format('DD/MMM/YYYY'),
-          level: 'Staff',
-          Position: 'Internal Audior Staff',
-          Qualifications: [
-            'Male, Female age 22-27 years olds',
-            "Bachelor's degree in Accounting",
-            '0-3 years experience in Internal Auditor, Auditor,Accounting',
-            'Computer literacy (MS office)',
-            'Good command of English both speaking and writing'
-          ]
         }
       ],
+      newData: [
+      ],
+      allPost: [],
       newOne: [],
       passList: {},
       searchText: '',
@@ -175,6 +79,11 @@ export default {
       return d - c
     })
     this.newOne = this.newDat
+    post.getPost(_response => {
+      this.items = _response
+      this.allPost = this.items
+      console.log(this.allPost)
+    })
   },
   computed: {
     list: function () {
@@ -275,7 +184,7 @@ h1#favor-text {
 #testFav:hover{
   background-color: #073050;
   height: 38px;
-  width: 100%; 
+  width: 100%;
   border-right: 2px solid yellow;
 }
 </style>

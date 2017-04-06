@@ -1,23 +1,14 @@
 import Vue from 'vue'
 
 export default {
-  getPosts (callback, errCallback) {
-    Vue.$http.get('/post.json')
+  getPost (callback) {
+    Vue.$http.get('/post')
     .then(function (response) {
       callback(response.data)
+      return response.dataconsole.log('1234567890')
     })
     .catch(function (response) {
-      errCallback(response)
-    })
-  },
-  getPost (uid, callback, errCallback) {
-    // Formatted string in JS is wrapped by ` not '
-    Vue.$http.get(`/post/${uid}.json`)
-    .then(function (response) {
-      callback(response.data)
-    })
-    .catch(function (response) {
-      errCallback(response)
+      console.log('CatchGetProfile')
     })
   },
   createPost (params, callback, errCallback) {

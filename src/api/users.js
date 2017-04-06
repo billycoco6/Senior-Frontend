@@ -40,6 +40,7 @@ export default {
   getProfile (callback) {
     Vue.$http.get('/students/' + localStorage.getItem('email'))
     .then(function (response) {
+      callback(response.data)
       console.log(response.data)
       return response.dataconsole.log('1234567890')
     })
@@ -60,25 +61,4 @@ export default {
   logOut (callback) {
     store.dispatch('logout')
   }
-
-  // logout (callback) {
-  //   console.log(store)
-  //   Vue.$http.delete('/users/api_sign_out.json')
-  //   .then(function (response) {
-  //     store.dispatch('logout')
-  //     callback(response.data)
-  //   })
-  //   .catch(function (response) {
-  //     store.dispatch('logout')
-  //   })
-  // },
-  // checkLoggedIn () {
-  //   Vue.$http.get('')
-  //   .then(function (response) {
-  //     store.dispatch('login')
-  //   })
-  //   .catch(function (response) {
-  //     store.dispatch('logout')
-  //   })
-  // }
 }

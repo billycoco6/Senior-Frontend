@@ -1,5 +1,4 @@
 <template lang="html">
-
   <div class="profile">
     <md-card class="card-example">
       <md-card-area md-inset><br>
@@ -11,7 +10,6 @@
       <p>First name:  {{ registrant.firstName }}   </p>
       <p>Last name:   {{ registrant.lastName }}      </p>
       <p>E-mail:       {{ registrant.email }}          </p>
-      <!-- <p>Telephone number:    {{ registrant.telephoneNumber }}   </p> -->
       <div v-for="item in registrant.workingExperience">
           <p> Working experience: {{ item }} </p>
       </div>
@@ -56,7 +54,7 @@ export default {
   mounted () {
     user.getProfile(_response => {
       this.items = _response
-      console.log(this.items)
+      // console.log(this.items)
       this.registrant.firstName = this.items.firstName
       this.registrant.lastName = this.items.lastName
       this.registrant.email = this.items.email
