@@ -71,7 +71,7 @@
 
 <script>
 import router from '../../router'
-import messagesApi from '../../api/users'
+import messagesApi from '../../api/messages'
 var images = require.context('../../assets/image/', false, /\.(jpg|png|JPG|PNG)$/)
 
 export default {
@@ -100,16 +100,15 @@ export default {
       })
     },
     applyJob (companyEmail) {
-      // sender, receiver, title and message
+      var app = this
       var messageParams = {
         sender: localStorage.getItem('email'),
         receiver: 'hello@muic.com',
-        title: '',
-        message: ''
+        title: 'Request for job position',
+        message: localStorage.getItem('email') + ' has applied to ' + app.mynews.JobName
       }
       console.log(messageParams)
-      // messagesApi.sendMessages(messageParams)
-      messagesApi.userDetail(localStorage.getItem('email'))
+      messagesApi.sendMessages(messageParams)
     },
     addFav: function () {
       this.$emit('update', this.mynews.index)

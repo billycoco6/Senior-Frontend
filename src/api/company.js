@@ -14,14 +14,15 @@ export default {
     })
   },
   getCompanyProfile (callback) {
+    // console.log(localStorage.getItem('email'))
     Vue.$http.get('/company/' + localStorage.getItem('email'))
     .then(function (response) {
       callback(response.data)
-      console('eiei')
-      return response.dataconsole.log('1234567890')
+      console.log(response.data.message)
+      return response.data.message
     })
     .catch(function (response) {
-      console.log('CatchGetProfile')
+      console.log(response)
     })
   },
   Edit (editParams, callback) {

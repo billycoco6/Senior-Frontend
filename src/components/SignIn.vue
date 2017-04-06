@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import UsersApi from '../api/users.js'
+import usersApi from '../api/users.js'
 import router from '../router'
 
 export default {
@@ -53,10 +53,10 @@ export default {
         username: app.username,
         password: app.password
       }
-      UsersApi.logIn(signinForm, function (_response) {
+      usersApi.logIn(signinForm, function (_response) {
         if (_response.status === true) {
           var userType = _response.role
-          console.log(userType)
+          localStorage.setItem('userType', userType)
           if (userType === 'company') {
             app.navigateTo('Company.profile')
           } else {

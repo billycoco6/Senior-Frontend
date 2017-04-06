@@ -13,7 +13,7 @@
         </a>
       </div>
       <div class="name">
-        <p>Uvuveve Osas</p>
+        <p>{{email}}</p>
       </div>
     </md-toolbar>
     <md-sidenav class="md-left" ref="leftSidenav">
@@ -34,7 +34,7 @@
             <router-link :to="{ name: 'main.inbox' }"><md-icon>move_to_inbox</md-icon> <span>Inbox</span></router-link>
           </md-list-item>
           <md-list-item>
-            <router-link :to="{ name: 'Users.sign_in' }"><md-icon>power_settings_new</md-icon> <span>Log out</span></router-link>
+            <a @click="logout"><md-icon>power_settings_new</md-icon><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLog out</span></a>
           </md-list-item>
         </md-list>
       </md-toolbar>
@@ -44,14 +44,23 @@
 
 <script>
 import router from './router'
+import usersApi from './api/users'
 
 export default {
+  data () {
+    return {
+      email: localStorage.getItem('email')
+    }
+  },
   methods: {
     toggleLeftSidenav () {
       this.$refs.leftSidenav.toggle()
     },
     navigateTo (nav) {
       router.push({ name: nav })
+    },
+    logout () {
+      usersApi.logOut()
     }
   }
 }

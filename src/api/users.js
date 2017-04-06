@@ -20,7 +20,6 @@ export default {
       localStorage.setItem('email', loginParams.username)
       // console.log(localStorage.getItem('email'))
       callback(response.data)
-      console.log('log in response')
       console.log(response.data)
       return response.data
     })
@@ -29,18 +28,19 @@ export default {
     })
   },
   userDetail (email, callback) {
-    console.log(store)
-    // console.log(email)
+    // console.log(store)
     Vue.$http.get('/students/' + email)
     .then(function (response) {
-      console.log('datas')
-      console.log(response.data)
+      callback(response.data)
+      console.log(response.data.message)
+      localStorage.setItem('userType', response.data.userType)
+      return response.data.message
     })
   },
   getProfile (callback) {
     Vue.$http.get('/students/' + localStorage.getItem('email'))
     .then(function (response) {
-      callback(response.data)
+      console.log(response.data)
       return response.dataconsole.log('1234567890')
     })
     .catch(function (response) {
@@ -56,8 +56,9 @@ export default {
     .catch(function (response) {
       console.log('CatchEdit')
     })
-      // store.dispatch('signup')
-      // callback(response.data)
+  },
+  logOut (callback) {
+    store.dispatch('logout')
   }
 
   // logout (callback) {

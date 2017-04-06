@@ -8,46 +8,33 @@
 </template>
 
 <script>
+import usersApi from '../../api/users'
+import companyApi from '../../api/company'
+
 export default {
   components: {
     eachMessage: require('./SingleMessage')
   },
   data () {
     return {
-      messageDetail: [
-        {
-          index: 1,
-          profilePicture: 'https://placeimg.com/40/40/people/1',
-          sender: 'Ali Connors',
-          title: 'Brunch this weekend?',
-          message: 'I will be in your neighborhood doing errands...',
-          senderEmail: 'hello@world.com'
-        },
-        {
-          index: 2,
-          profilePicture: 'https://placeimg.com/40/40/people/6',
-          sender: 'me, Scott, Jennifer',
-          title: 'Summer BBQ',
-          message: 'Wish I could come, but I am out of town ...',
-          senderEmail: 'hello@world.com'
-        },
-        {
-          index: 3,
-          profilePicture: 'https://placeimg.com/40/40/people/5',
-          sender: 'Sandra Adams',
-          title: 'Oui oui',
-          message: 'Do you have any Paris recommendation?',
-          senderEmail: 'hello@world.com'
-        },
-        {
-          index: 4,
-          profilePicture: 'https://placeimg.com/40/40/people/8',
-          sender: 'Trevor Hansen',
-          title: 'Order confirmation',
-          message: 'Thank you for your recent order from ...',
-          senderEmail: 'hello@world.com'
-        }
-      ]
+      messageDetail: []
+    }
+  },
+  mounted () {
+    if (localStorage.getItem('userType') === 'student') {
+      usersApi.userDetail(localStorage.getItem('email'), _response => {
+        console.log('student start')
+        this.items = _response.message
+        console.log(this.items)
+        this.messageDetail = this.items
+      })
+    } else if (localStorage.getItem('userType') === 'company') {
+      companyApi.getCompanyProfile(_response => {
+        console.log('this should print')
+        this.items = _response.message
+        console.log(this.items)
+        this.messageDetail = this.items
+      })
     }
   }
 }
