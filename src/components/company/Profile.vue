@@ -8,36 +8,52 @@
       <center><h2 class="md-title">Profile</h2></center>
     </md-card-header>
     <md-card-content>
-      <p>First name:  {{ registrant.firstName }}   </p>
-      <p>Last name:   {{ registrant.lastName }}      </p>
-      <p>E-mail:       {{ registrant.email }}          </p>
-      <!-- <p>Telephone number:    {{ registrant.telephoneNumber }}   </p> -->
-      <div v-for="item in registrant.workingExperience">
-          <p> Working experience: {{ item }} </p>
-      </div>
-      <div v-for="item in registrant.education">
-          <p> Education:   {{ item }} </p>
-      </div>
-      <div v-for="item in registrant.skillSet">
-          <p>Skillset:    {{ item }}   </p>
-      </div>
+      <p>First name:         </p>
+      <p>Last name:           </p>
+      <p>E-mail:                 </p>
+      <p>Telephone number:       </p>
     </md-card-content>
-        <center><md-button class="md-raised md-primary" @click.native="editProfile()">Edit profile</md-button></center>
-      </md-card-area>
-    </md-card>
+    <center><md-button class="md-raised md-primary" @click.native="editProfile()">Edit profile</md-button></center>
+  </md-card-area>
+</md-card>
   </div>
 
 </template>
 
 <script>
 import router from '../../router'
+import company from '../../api/company.js'
 export default {
   name: 'profile',
+  data () {
+    return {
+      company: {
+        name: '',
+        description: '',
+        email: '',
+        phoneNumber: ''
+      }
+    }
+  },
   methods: {
     editProfile () {
       router.push({ name: 'Users.edit' })
       console.log('yayy')
     }
+  },
+  mounted () {
+    console.log('====')
+    localStorage.getItem('email')
+    company.getCompanyProfile(_response => {
+      this.items = _response
+      console.log(this.items)
+      console.log('yay')
+      this.company.firstName = this.items.firstName
+      this.company.lastName = this.items.lastName
+      this.company.email = this.items.email
+      this.company.telephoneNumber = this.items.telephoneNumber
+    })
+    // console.log(product.x)
   }
 }
 </script>

@@ -63,7 +63,7 @@ export default {
       this.registrant.telephoneNumber = this.items.telephoneNumber
       this.registrant.workingExperience = this.items.workExperience
       this.registrant.education = this.items.education
-      this.registrant.skillSet = this.items.skillSet
+      this.registrant.skillSet = this.items.skills
     })
     // console.log(product.x)
   }

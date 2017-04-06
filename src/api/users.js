@@ -20,7 +20,6 @@ export default {
       localStorage.setItem('email', loginParams.username)
       // console.log(localStorage.getItem('email'))
       callback(response.data)
-      localStorage.setItem('email', loginParams.username)
       console.log('log in response')
       console.log(response.data)
       return response.data
