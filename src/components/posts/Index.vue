@@ -7,11 +7,11 @@
       <div>
       </div>
       <feeds-component-box class="row" id="myPos"></feeds-component-box>
-    <!-- <div class="row">
+    <div class="row">
         <div class = "col-md-6">
             <button type="button" class="btn btn-danger btn-block" @click="limitNumber += 2">SHOW MORE...</button>
         </div>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>

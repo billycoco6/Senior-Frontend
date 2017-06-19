@@ -53,7 +53,6 @@
 import router from '../../router'
 // import VueLocalStorage from 'vue-localstorage'
 var images = require.context('../../assets/image/', false, /\.(jpg|png|JPG|PNG)$/)
-
 export default {
   name: 'modal',
   props: ['page'],
