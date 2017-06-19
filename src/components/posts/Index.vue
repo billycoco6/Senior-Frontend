@@ -2,7 +2,7 @@
   <div class="posts">
     <div class="container">
       <div class="center">
-        <h1 class="header-text">WELCOME TO NEW FEEDS</h1>
+        <h1 class="header-text">Dashboard</h1>
       </div>
       <div>
       </div>

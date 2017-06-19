@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import usersApi from '../api/users.js'
+// import usersApi from '../api/users.js'
 import router from '../router'
 
 export default {
@@ -49,21 +49,21 @@ export default {
     login () {
       console.log('methods.login')
       var app = this
-      var signinForm = {
-        username: app.username,
-        password: app.password
-      }
-      usersApi.logIn(signinForm, function (_response) {
-        if (_response.status === true) {
-          var userType = _response.role
-          localStorage.setItem('userType', userType)
-          if (userType === 'company') {
-            app.navigateTo('Company.profile')
-          } else {
-            app.navigateTo('Posts.index')
-          }
-        }
-      })
+      // var signinForm = {
+      //   username: app.username,
+      //   password: app.password
+      // }
+      // usersApi.logIn(signinForm, function (_response) {
+      //   if (_response.status === true) {
+      //     var userType = _response.role
+      //     localStorage.setItem('userType', userType)
+      //     if (userType === 'company') {
+      //       app.navigateTo('Company.profile')
+      //     } else {
+      app.navigateTo('Posts.index')
+          // }
+        // }
+      // })
     },
     navigateTo (nav) {
       console.log('methods.navigate')
