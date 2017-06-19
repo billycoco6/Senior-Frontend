@@ -34,36 +34,37 @@
 </template>
 
 <script>
-// import usersApi from '../api/users.js'
+import usersApi from '../api/users.js'
 import router from '../router'
 
 export default {
   name: 'sign-in',
   data () {
     return {
-      username: '',
-      password: ''
+      username: 'billy@billy.com',
+      password: '1234'
     }
   },
   methods: {
     login () {
       console.log('methods.login')
       var app = this
-      // var signinForm = {
-      //   username: app.username,
-      //   password: app.password
-      // }
-      // usersApi.logIn(signinForm, function (_response) {
-      //   if (_response.status === true) {
-      //     var userType = _response.role
-      //     localStorage.setItem('userType', userType)
-      //     if (userType === 'company') {
-      //       app.navigateTo('Company.profile')
-      //     } else {
-      app.navigateTo('Posts.index')
-          // }
-        // }
-      // })
+      var signinForm = {
+        username: app.username,
+        password: app.password
+      }
+      usersApi.logIn(signinForm, function (_response) {
+        console.log(_response.status)
+        if (_response.status === true) {
+          var userType = _response.role
+          localStorage.setItem('userType', userType)
+          if (userType === 'company') {
+            app.navigateTo('Company.profile')
+          } else {
+            app.navigateTo('Posts.index')
+          }
+        }
+      })
     },
     navigateTo (nav) {
       console.log('methods.navigate')
